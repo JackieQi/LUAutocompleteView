@@ -37,7 +37,7 @@ open class LUAutocompleteView: UIView {
             }
 
             textField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
-            textField.addTarget(self, action: #selector(textFieldEditingEnded), for: .editingDidEnd)
+            //textField.addTarget(self, action: #selector(textFieldEditingEnded), for: .editingDidEnd)
 
             setupConstraints()
         }
@@ -250,6 +250,7 @@ extension LUAutocompleteView: UITableViewDelegate {
         - indexPath: An index path locating the new selected row in `tableView`.
     */
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        textFieldEditingEnded()
         guard indexPath.row < elements.count else {
             assertionFailure("Sanity check")
             return
